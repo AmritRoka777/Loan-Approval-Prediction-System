@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>LoanAI | Loan Application</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #f4f7fb;
+
+            color: #172033;
+
+        }
+
+
+        /* ==================================================
+           NAVBAR
+        ================================================== */
+
+        .navbar {
+
+            height: 72px;
+
+            background: white;
+
+            border-bottom:
+                1px solid #e7ebf2;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            padding:
+                0 7%;
+
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            font-size: 21px;
+
+            font-weight: 800;
+
+            color: #172554;
+
+        }
+
+
+        .brand-icon {
+
+            width: 42px;
+
+            height: 42px;
+
+            border-radius: 12px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #7c3aed
+                );
+
+            color: white;
+
+            font-size: 20px;
+
+        }
+
+
+        .status {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: #64748b;
+
+            font-size: 13px;
+
+        }
+
+
+        .status-dot {
+
+            width: 9px;
+
+            height: 9px;
+
+            border-radius: 50%;
+
+            background: #22c55e;
+
+        }
+
+
+        /* ==================================================
+           HERO
+        ================================================== */
+
+        .hero {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #111c44,
+                    #1d4ed8,
+                    #4338ca
+                );
+
+            color: white;
+
+            padding:
+                70px 7% 110px;
+
+        }
+
+
+        .hero-content {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+        }
+
+
+        .badge {
+
+            display: inline-block;
+
+            padding:
+                8px 15px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(255,255,255,0.12);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.2);
+
+            font-size: 12px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .hero h1 {
+
+            max-width: 720px;
+
+            font-size: 48px;
+
+            line-height: 1.15;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .hero p {
+
+            max-width: 650px;
+
+            color: #dbeafe;
+
+            font-size: 16px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* ==================================================
+           MAIN
+        ================================================== */
+
+        .container {
+
+            max-width: 1100px;
+
+            margin:
+                -55px auto 70px;
+
+            padding:
+                0 20px;
+
+            position: relative;
+
+        }
+
+
+        .card {
+
+            background: white;
+
+            border-radius: 22px;
+
+            border:
+                1px solid #e7ebf2;
+
+            box-shadow:
+                0 20px 50px
+                rgba(15,23,42,0.08);
+
+        }
+
+
+        .header {
+
+            padding: 30px;
+
+            border-bottom:
+                1px solid #edf0f5;
+
+        }
+
+
+        .header h2 {
+
+            font-size: 22px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .header p {
+
+            color: #64748b;
+
+            font-size: 14px;
+
+        }
+
+
+        /* ==================================================
+           FORM
+        ================================================== */
+
+        .form {
+
+            padding: 32px;
+
+        }
+
+
+        .section {
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .section-title {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .number {
+
+            width: 34px;
+
+            height: 34px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #eef2ff;
+
+            color: #4338ca;
+
+            border-radius: 10px;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+        }
+
+
+        .section-title h3 {
+
+            font-size: 16px;
+
+        }
+
+
+        .section-title p {
+
+            color: #94a3b8;
+
+            font-size: 11px;
+
+        }
+
+
+        .grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+
+        }
+
+
+        .field {
+
+            display: flex;
+
+            flex-direction: column;
+
+        }
+
+
+        label {
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            color: #334155;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        input,
+        select {
+
+            height: 48px;
+
+            border:
+                1px solid #d8dee9;
+
+            border-radius: 11px;
+
+            padding:
+                0 14px;
+
+            background: #fafbfd;
+
+            outline: none;
+
+            font-size: 14px;
+
+        }
+
+
+        input:focus,
+        select:focus {
+
+            border-color: #4f46e5;
+
+            background: white;
+
+            box-shadow:
+                0 0 0 4px
+                rgba(79,70,229,0.09);
+
+        }
+
+
+        .hint {
+
+            margin-top: 6px;
+
+            color: #94a3b8;
+
+            font-size: 11px;
+
+        }
+
+
+        /* ==================================================
+           BUTTON
+        ================================================== */
+
+        .submit {
+
+            border-top:
+                1px solid #edf0f5;
+
+            padding-top: 28px;
+
+            display: flex;
+
+            justify-content: flex-end;
+
+        }
+
+
+        button {
+
+            border: none;
+
+            padding:
+                15px 28px;
+
+            border-radius: 12px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #4f46e5
+                );
+
+            color: white;
+
+            font-weight: 800;
+
+            font-size: 14px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 25px
+                rgba(37,99,235,0.25);
+
+            transition: 0.2s;
+
+        }
+
+
+        button:hover {
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        /* ==================================================
+           HOW IT WORKS
+        ================================================== */
+
+        .how {
+
+            margin-top: 30px;
+
+            padding: 32px;
+
+        }
+
+
+        .how h2 {
+
+            font-size: 21px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .how > p {
+
+            color: #64748b;
+
+            font-size: 14px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .steps {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 15px;
+
+        }
+
+
+        .step {
+
+            padding: 20px;
+
+            background: #fafbfd;
+
+            border:
+                1px solid #e7ebf2;
+
+            border-radius: 15px;
+
+        }
+
+
+        .step-number {
+
+            width: 38px;
+
+            height: 38px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #eef2ff;
+
+            color: #4338ca;
+
+            border-radius: 10px;
+
+            font-weight: 800;
+
+            margin-bottom: 14px;
+
+        }
+
+
+        .step h4 {
+
+            font-size: 14px;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .step p {
+
+            color: #64748b;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+        }
+
+
+        footer {
+
+            text-align: center;
+
+            padding: 25px;
+
+            color: #94a3b8;
+
+            font-size: 12px;
+
+        }
+
+
+        /* ==================================================
+           RESPONSIVE
+        ================================================== */
+
+        @media(max-width:800px) {
+
+            .hero h1 {
+
+                font-size: 37px;
+
+            }
+
+            .steps {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+
+            }
+
+        }
+
+
+        @media(max-width:600px) {
+
+            .status {
+
+                display: none;
+
+            }
+
+            .hero {
+
+                padding:
+                    50px 20px 90px;
+
+            }
+
+            .hero h1 {
+
+                font-size: 31px;
+
+            }
+
+            .container {
+
+                padding:
+                    0 12px;
+
+            }
+
+            .form {
+
+                padding: 22px;
+
+            }
+
+            .grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .steps {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .submit button {
+
+                width: 100%;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ======================================================
+     NAVBAR
+====================================================== -->
+
+<nav class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            🏦
+        </div>
+
+        LoanAI
+
+    </div>
+
+
+    <div class="status">
+
+        <span class="status-dot"></span>
+
+        AI Prediction System Online
+
+    </div>
+
+</nav>
+
+
+<!-- ======================================================
+     HERO
+====================================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="badge">
+            🤖 Machine Learning Powered
+        </div>
+
+
+        <h1>
+            Smarter loan decisions,
+            powered by data.
+        </h1>
+
+
+        <p>
+            Enter the applicant's information below.
+            Our trained machine learning model will analyze
+            the application and estimate the probability
+            of loan approval.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================================
+     MAIN
+====================================================== -->
+
+<main class="container">
+
+
+<div class="card">
+
+
+    <div class="header">
+
+        <h2>
+            Loan Application
+        </h2>
+
+        <p>
+            Complete all required information to analyze
+            the application.
+        </p>
+
+    </div>
+
+
+    <form
+        class="form"
+        action="/predict"
+        method="POST"
+        target="_blank"
+    >
+
+
+        <!-- ==================================================
+             PERSONAL
+        ================================================== -->
+
+        <div class="section">
+
+            <div class="section-title">
+
+                <div class="number">
+                    01
+                </div>
+
+                <div>
+
+                    <h3>
+                        Personal Information
+                    </h3>
+
+                    <p>
+                        Applicant profile
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="grid">
+
+
+                <div class="field">
+
+                    <label>
+                        Gender
+                    </label>
+
+                    <select
+                        name="Gender"
+                        required
+                    >
+
+                        <option value="">
+                            Select gender
+                        </option>
+
+                        <option value="Male">
+                            Male
+                        </option>
+
+                        <option value="Female">
+                            Female
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Marital Status
+                    </label>
+
+                    <select
+                        name="Married"
+                        required
+                    >
+
+                        <option value="">
+                            Select status
+                        </option>
+
+                        <option value="Yes">
+                            Married
+                        </option>
+
+                        <option value="No">
+                            Not Married
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Dependents
+                    </label>
+
+                    <select
+                        name="Dependents"
+                        required
+                    >
+
+                        <option value="">
+                            Select
+                        </option>
+
+                        <option value="0">
+                            0
+                        </option>
+
+                        <option value="1">
+                            1
+                        </option>
+
+                        <option value="2">
+                            2
+                        </option>
+
+                        <option value="3+">
+                            3+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Education
+                    </label>
+
+                    <select
+                        name="Education"
+                        required
+                    >
+
+                        <option value="">
+                            Select education
+                        </option>
+
+                        <option value="Graduate">
+                            Graduate
+                        </option>
+
+                        <option value="Not Graduate">
+                            Not Graduate
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Self Employed
+                    </label>
+
+                    <select
+                        name="Self_Employed"
+                        required
+                    >
+
+                        <option value="">
+                            Select
+                        </option>
+
+                        <option value="Yes">
+                            Yes
+                        </option>
+
+                        <option value="No">
+                            No
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Property Area
+                    </label>
+
+                    <select
+                        name="Property_Area"
+                        required
+                    >
+
+                        <option value="">
+                            Select area
+                        </option>
+
+                        <option value="Urban">
+                            Urban
+                        </option>
+
+                        <option value="Semiurban">
+                            Semiurban
+                        </option>
+
+                        <option value="Rural">
+                            Rural
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- ==================================================
+             FINANCIAL
+        ================================================== -->
+
+        <div class="section">
+
+            <div class="section-title">
+
+                <div class="number">
+                    02
+                </div>
+
+                <div>
+
+                    <h3>
+                        Financial Information
+                    </h3>
+
+                    <p>
+                        Income, loan and credit information
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="grid">
+
+
+                <div class="field">
+
+                    <label>
+                        Applicant Income
+                    </label>
+
+                    <input
+                        type="number"
+                        name="ApplicantIncome"
+                        min="0"
+                        placeholder="e.g. 5000"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Co-applicant Income
+                    </label>
+
+                    <input
+                        type="number"
+                        name="CoapplicantIncome"
+                        min="0"
+                        placeholder="e.g. 2000"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Loan Amount
+                    </label>
+
+                    <input
+                        type="number"
+                        name="LoanAmount"
+                        min="0"
+                        placeholder="e.g. 150"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Loan Term
+                    </label>
+
+                    <select
+                        name="Loan_Amount_Term"
+                        required
+                    >
+
+                        <option value="">
+                            Select term
+                        </option>
+
+                        <option value="120">
+                            120 months
+                        </option>
+
+                        <option value="180">
+                            180 months
+                        </option>
+
+                        <option value="240">
+                            240 months
+                        </option>
+
+                        <option value="300">
+                            300 months
+                        </option>
+
+                        <option value="360">
+                            360 months
+                        </option>
+
+                        <option value="480">
+                            480 months
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Credit History
+                    </label>
+
+                    <select
+                        name="Credit_History"
+                        required
+                    >
+
+                        <option value="">
+                            Select
+                        </option>
+
+                        <option value="1">
+                            Good
+                        </option>
+
+                        <option value="0">
+                            Poor
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- ==================================================
+             BUTTON
+        ================================================== -->
+
+        <div class="submit">
+
+            <button type="submit">
+
+                🔮 Analyze Application
+
+            </button>
+
+        </div>
+
+
+    </form>
+
+</div>
+
+
+<!-- ======================================================
+     HOW IT WORKS
+====================================================== -->
+
+<div class="card how">
+
+    <h2>
+        🧠 How does the prediction work?
+    </h2>
+
+    <p>
+        The application is processed through a trained
+        machine learning pipeline.
+    </p>
+
+
+    <div class="steps">
+
+
+        <div class="step">
+
+            <div class="step-number">
+                01
+            </div>
+
+            <h4>
+                Enter Information
+            </h4>
+
+            <p>
+                Applicant information is collected
+                from the form.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                02
+            </div>
+
+            <h4>
+                Process Data
+            </h4>
+
+            <p>
+                The system prepares numerical and
+                categorical information.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                03
+            </div>
+
+            <h4>
+                ML Analysis
+            </h4>
+
+            <p>
+                The trained Logistic Regression model
+                analyzes the application.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                04
+            </div>
+
+            <h4>
+                Final Prediction
+            </h4>
+
+            <p>
+                The model returns an approval probability
+                and final prediction.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+</main>
+
+
+<footer>
+
+    <strong>LoanAI</strong>
+    — Loan Approval Prediction System
+
+    <br>
+
+    Developed using Python • Flask • Pandas • Scikit-learn
+
+</footer>
+
+
+</body>
+
+</html>

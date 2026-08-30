@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {{ result }} | LoanAI
+    </title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            min-height: 100vh;
+
+            background: #f4f7fb;
+
+            color: #172033;
+
+        }
+
+
+        /* ==================================================
+           NAVBAR
+        ================================================== */
+
+        .navbar {
+
+            height: 72px;
+
+            background: white;
+
+            border-bottom:
+                1px solid #e7ebf2;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+
+            padding:
+                0 7%;
+
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            font-size: 21px;
+
+            font-weight: 800;
+
+            color: #172554;
+
+        }
+
+
+        .brand-icon {
+
+            width: 42px;
+
+            height: 42px;
+
+            border-radius: 12px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #7c3aed
+                );
+
+            color: white;
+
+            font-size: 20px;
+
+        }
+
+
+        /* ==================================================
+           RESULT HERO
+        ================================================== */
+
+        .result-page {
+
+            max-width: 1050px;
+
+            margin: 45px auto 70px;
+
+            padding:
+                0 20px;
+
+        }
+
+
+        .result-card {
+
+            text-align: center;
+
+            border-radius: 28px;
+
+            padding:
+                55px 35px 45px;
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+
+        /* APPROVED */
+
+        .approved {
+
+            background:
+                radial-gradient(
+                    circle at 50% -10%,
+                    rgba(34,197,94,0.25),
+                    transparent 45%
+                ),
+                linear-gradient(
+                    135deg,
+                    #ecfdf5,
+                    #f0fdf4
+                );
+
+            border:
+                2px solid #86efac;
+
+        }
+
+
+        /* REJECTED */
+
+        .rejected {
+
+            background:
+                radial-gradient(
+                    circle at 50% -10%,
+                    rgba(239,68,68,0.20),
+                    transparent 45%
+                ),
+                linear-gradient(
+                    135deg,
+                    #fff1f2,
+                    #fff7f7
+                );
+
+            border:
+                2px solid #fca5a5;
+
+        }
+
+
+        /* ==================================================
+           RESULT ICON
+        ================================================== */
+
+        .result-icon {
+
+            width: 120px;
+
+            height: 120px;
+
+            margin:
+                0 auto 25px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 60px;
+
+            color: white;
+
+            animation:
+                pop 0.8s ease;
+
+        }
+
+
+        .approved .result-icon {
+
+            background: #22c55e;
+
+            box-shadow:
+                0 15px 40px
+                rgba(34,197,94,0.35);
+
+        }
+
+
+        .rejected .result-icon {
+
+            background: #ef4444;
+
+            box-shadow:
+                0 15px 40px
+                rgba(239,68,68,0.30);
+
+        }
+
+
+        @keyframes pop {
+
+            0% {
+
+                transform:
+                    scale(0.1)
+                    rotate(-30deg);
+
+                opacity: 0;
+
+            }
+
+            70% {
+
+                transform:
+                    scale(1.1)
+                    rotate(5deg);
+
+            }
+
+            100% {
+
+                transform:
+                    scale(1)
+                    rotate(0);
+
+                opacity: 1;
+
+            }
+
+        }
+
+
+        /* ==================================================
+           RESULT TEXT
+        ================================================== */
+
+        .result-card h1 {
+
+            font-size: 42px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .approved h1 {
+
+            color: #15803d;
+
+        }
+
+
+        .rejected h1 {
+
+            color: #b91c1c;
+
+        }
+
+
+        .message {
+
+            max-width: 650px;
+
+            margin:
+                auto;
+
+            color: #64748b;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* ==================================================
+           PROBABILITY
+        ================================================== */
+
+        .probability {
+
+            max-width: 600px;
+
+            margin:
+                35px auto 0;
+
+            padding: 28px;
+
+            background: white;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 12px 35px
+                rgba(15,23,42,0.08);
+
+        }
+
+
+        .probability-title {
+
+            color: #64748b;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .percentage {
+
+            font-size: 54px;
+
+            font-weight: 900;
+
+            color: #172554;
+
+            margin-bottom: 18px;
+
+        }
+
+
+        .track {
+
+            height: 16px;
+
+            background: #e5e7eb;
+
+            border-radius: 30px;
+
+            overflow: hidden;
+
+        }
+
+
+        .bar {
+
+            height: 100%;
+
+            width: 0;
+
+            border-radius: 30px;
+
+            animation:
+                fillBar 1.5s ease forwards;
+
+        }
+
+
+        .approved .bar {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #22c55e,
+                    #16a34a
+                );
+
+        }
+
+
+        .rejected .bar {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ef4444,
+                    #dc2626
+                );
+
+        }
+
+
+        @keyframes fillBar {
+
+            to {
+
+                width:
+                    var(--percentage);
+
+            }
+
+        }
+
+
+        .caption {
+
+            color: #94a3b8;
+
+            font-size: 11px;
+
+            margin-top: 9px;
+
+        }
+
+
+        /* ==================================================
+           SUMMARY
+        ================================================== */
+
+        .summary {
+
+            margin-top: 25px;
+
+            padding: 28px;
+
+            background: white;
+
+            border-radius: 20px;
+
+            text-align: left;
+
+            box-shadow:
+                0 10px 30px
+                rgba(15,23,42,0.06);
+
+        }
+
+
+        .summary h2 {
+
+            font-size: 19px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .summary-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            gap: 13px;
+
+        }
+
+
+        .item {
+
+            background: #f8fafc;
+
+            border:
+                1px solid #edf0f5;
+
+            padding: 15px;
+
+            border-radius: 12px;
+
+        }
+
+
+        .item span {
+
+            display: block;
+
+            color: #94a3b8;
+
+            font-size: 10px;
+
+            margin-bottom: 4px;
+
+        }
+
+
+        .item strong {
+
+            font-size: 13px;
+
+            color: #334155;
+
+        }
+
+
+        /* ==================================================
+           EXPLANATION
+        ================================================== */
+
+        .explanation {
+
+            margin-top: 25px;
+
+            padding: 28px;
+
+            background: white;
+
+            border-radius: 20px;
+
+            text-align: left;
+
+            box-shadow:
+                0 10px 30px
+                rgba(15,23,42,0.06);
+
+        }
+
+
+        .explanation h2 {
+
+            font-size: 19px;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .explanation p {
+
+            color: #64748b;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .flow {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-top: 25px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .flow-box {
+
+            padding:
+                14px 18px;
+
+            border-radius: 12px;
+
+            background: #f8fafc;
+
+            border:
+                1px solid #e7ebf2;
+
+            text-align: center;
+
+        }
+
+
+        .flow-box strong {
+
+            display: block;
+
+            font-size: 12px;
+
+            color: #172554;
+
+        }
+
+
+        .flow-box span {
+
+            display: block;
+
+            font-size: 10px;
+
+            color: #94a3b8;
+
+            margin-top: 3px;
+
+        }
+
+
+        .arrow {
+
+            color: #94a3b8;
+
+            font-size: 20px;
+
+        }
+
+
+        /* ==================================================
+           BUTTONS
+        ================================================== */
+
+        .actions {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-top: 30px;
+
+        }
+
+
+        .button {
+
+            text-decoration: none;
+
+            padding:
+                14px 22px;
+
+            border-radius: 11px;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            transition: 0.2s;
+
+        }
+
+
+        .primary {
+
+            background: #172554;
+
+            color: white;
+
+        }
+
+
+        .secondary {
+
+            background: white;
+
+            color: #334155;
+
+            border:
+                1px solid #d8dee9;
+
+        }
+
+
+        .button:hover {
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        /* ==================================================
+           CONFETTI
+        ================================================== */
+
+        .confetti {
+
+            position: fixed;
+
+            top: -20px;
+
+            z-index: 9999;
+
+            font-size: 20px;
+
+            animation:
+                fall 4s linear forwards;
+
+        }
+
+
+        @keyframes fall {
+
+            0% {
+
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+
+                opacity: 1;
+
+            }
+
+            100% {
+
+                transform:
+                    translateY(110vh)
+                    rotate(720deg);
+
+                opacity: 0;
+
+            }
+
+        }
+
+
+        /* ==================================================
+           RESPONSIVE
+        ================================================== */
+
+        @media(max-width:700px) {
+
+            .result-page {
+
+                margin-top: 20px;
+
+            }
+
+            .result-card {
+
+                padding:
+                    40px 18px;
+
+            }
+
+            .result-card h1 {
+
+                font-size: 31px;
+
+            }
+
+            .percentage {
+
+                font-size: 45px;
+
+            }
+
+            .summary-grid {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+
+            }
+
+        }
+
+
+        @media(max-width:500px) {
+
+            .summary-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .actions {
+
+                flex-direction: column;
+
+            }
+
+            .button {
+
+                text-align: center;
+
+            }
+
+            .arrow {
+
+                transform:
+                    rotate(90deg);
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ======================================================
+     NAVBAR
+====================================================== -->
+
+<nav class="navbar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            🏦
+        </div>
+
+        LoanAI
+
+    </div>
+
+</nav>
+
+
+<!-- ======================================================
+     RESULT PAGE
+====================================================== -->
+
+<main class="result-page">
+
+
+<div class="result-card {{ result_class }}">
+
+
+    <!-- ==================================================
+         RESULT ICON
+    ================================================== -->
+
+    <div class="result-icon">
+
+        {{ result_icon }}
+
+    </div>
+
+
+    <!-- ==================================================
+         RESULT TITLE
+    ================================================== -->
+
+    {% if result_class == "approved" %}
+
+        <h1>
+            🎉 Loan Approved!
+        </h1>
+
+    {% else %}
+
+        <h1>
+            😔 Loan Not Approved
+        </h1>
+
+    {% endif %}
+
+
+    <p class="message">
+
+        {{ result_message }}
+
+    </p>
+
+
+    <!-- ==================================================
+         PROBABILITY
+    ================================================== -->
+
+    <div class="probability">
+
+        <div class="probability-title">
+
+            MODEL APPROVAL PROBABILITY
+
+        </div>
+
+
+        <div class="percentage">
+
+            {{ approval_percentage }}%
+
+        </div>
+
+
+        <div class="track">
+
+            <div
+                class="bar"
+                style="
+                    --percentage:
+                    {{ approval_percentage }}%;
+                "
+            ></div>
+
+        </div>
+
+
+        <div class="caption">
+
+            This is the probability estimated by
+            the trained machine learning model.
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         APPLICANT SUMMARY
+    ================================================== -->
+
+    <div class="summary">
+
+        <h2>
+            📋 Applicant Summary
+        </h2>
+
+
+        <div class="summary-grid">
+
+
+            <div class="item">
+
+                <span>
+                    Gender
+                </span>
+
+                <strong>
+                    {{ form_data.get('Gender') }}
+                </strong>
+
+            </div>
+
+
+            <div class="item">
+
+                <span>
+                    Marital Status
+                </span>
+
+                <strong>
+                    {% if form_data.get('Married') == 'Yes' %}
+                        Married
+                    {% else %}
+                        Not Married
+                    {% endif %}
+                </strong>
+
+            </div>
+
+
+            <div class="item">
+
+                <span>
+                    Dependents
+                </span>
+
+                <strong>
+                    {{ form_data.get('Dependents') }}
+                </strong>
+
+            </div>
+
+
+            <div class="item">
+
+                <span>
+                    Education
+                </span>
+
+                <strong>
+                    {{ form_data.get('Education') }}
+                </strong>
+
+            </div>
+
+
+            <div class="item">
+
+                <span>
+                    Applicant Income
+                </span>
+
+                <strong>
+                    {{ form_data.get('ApplicantIncome') }}
+                </strong>
+
+            </div>
+
+
+            <div class="item">
+
+                <span>
+                    Co-applicant Income
+                </span>
+
+                <strong>
+                    {{ form_data.get('CoapplicantIncome') }}
+                </strong>
+
+            </div>
+
+
+            <div class="item">
+
+                <span>
+                    Loan Amount
+                </span>
+
+                <strong>
+                    {{ form_data.get('LoanAmount') }}
+                </strong>
+
+            </div>
+
+
+            <div class="item">
+
+                <span>
+                    Loan Term
+                </span>
+
+                <strong>
+                    {{ form_data.get('Loan_Amount_Term') }}
+                    months
+                </strong>
+
+            </div>
+
+
+            <div class="item">
+
+                <span>
+                    Credit History
+                </span>
+
+                <strong>
+
+                    {% if form_data.get('Credit_History') == '1' %}
+
+                        ✓ Good
+
+                    {% else %}
+
+                        ✕ Poor
+
+                    {% endif %}
+
+                </strong>
+
+            </div>
+
+
+            <div class="item">
+
+                <span>
+                    Property Area
+                </span>
+
+                <strong>
+                    {{ form_data.get('Property_Area') }}
+                </strong>
+
+            </div>
+
+
+            <div class="item">
+
+                <span>
+                    Self Employed
+                </span>
+
+                <strong>
+                    {{ form_data.get('Self_Employed') }}
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         HOW MODEL DECIDES
+    ================================================== -->
+
+    <div class="explanation">
+
+        <h2>
+            🧠 How did the model decide?
+        </h2>
+
+
+        <p>
+
+            The prediction is generated by the trained
+            machine learning pipeline. Your application
+            information is transformed into features,
+            processed and then analyzed by the trained
+            Logistic Regression model.
+
+        </p>
+
+
+        <div class="flow">
+
+
+            <div class="flow-box">
+
+                <strong>
+                    Your Data
+                </strong>
+
+                <span>
+                    Application details
+                </span>
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div class="flow-box">
+
+                <strong>
+                    Preprocessing
+                </strong>
+
+                <span>
+                    Encode & scale
+                </span>
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div class="flow-box">
+
+                <strong>
+                    ML Model
+                </strong>
+
+                <span>
+                    Logistic Regression
+                </span>
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div class="flow-box">
+
+                <strong>
+                    Probability
+                </strong>
+
+                <span>
+                    {{ approval_percentage }}%
+                </span>
+
+            </div>
+
+
+            <div class="arrow">
+                →
+            </div>
+
+
+            <div class="flow-box">
+
+                <strong>
+                    Prediction
+                </strong>
+
+                <span>
+                    {{ result }}
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         BUTTONS
+    ================================================== -->
+
+    <div class="actions">
+
+        <a
+            href="/"
+            class="button primary"
+        >
+            🔄 New Application
+        </a>
+
+
+        <a
+            href="/"
+            class="button secondary"
+        >
+            🏠 Back to Home
+        </a>
+
+    </div>
+
+
+</div>
+
+
+</main>
+
+
+<!-- ======================================================
+     APPROVAL CELEBRATION
+====================================================== -->
+
+{% if result_class == "approved" %}
+
+<script>
+
+    function celebrate() {
+
+        const emojis = [
+            "🎉",
+            "🎊",
+            "✨",
+            "🥳",
+            "⭐"
+        ];
+
+
+        for (
+            let i = 0;
+            i < 100;
+            i++
+        ) {
+
+            const piece =
+                document.createElement("div");
+
+
+            piece.className =
+                "confetti";
+
+
+            piece.innerText =
+                emojis[
+                    Math.floor(
+                        Math.random()
+                        * emojis.length
+                    )
+                ];
+
+
+            piece.style.left =
+                Math.random() * 100 + "vw";
+
+
+            piece.style.animationDuration =
+                (2.5 +
+                Math.random() * 2) + "s";
+
+
+            piece.style.animationDelay =
+                Math.random() + "s";
+
+
+            document.body.appendChild(
+                piece
+            );
+
+
+            setTimeout(
+                () => piece.remove(),
+                5500
+            );
+
+        }
+
+    }
+
+
+    window.addEventListener(
+        "load",
+        celebrate
+    );
+
+</script>
+
+{% endif %}
+
+
+</body>
+
+</html>

@@ -1,0 +1,1051 @@
+/* ==========================================================
+   GENERAL
+========================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef2ff,
+            #f8fafc
+        );
+
+    color: #172033;
+
+    min-height: 100vh;
+}
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.header {
+
+    width: 100%;
+
+    padding: 20px 7%;
+
+    background: white;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.logo {
+
+    font-size: 24px;
+
+    font-weight: 800;
+
+    color: #4338ca;
+}
+
+
+.header-subtitle {
+
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+
+/* ==========================================================
+   CONTAINER
+========================================================== */
+
+.container {
+
+    width: 90%;
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 50px 0;
+}
+
+
+/* ==========================================================
+   HERO
+========================================================== */
+
+.hero {
+
+    text-align: center;
+
+    margin-bottom: 35px;
+}
+
+
+.badge {
+
+    display: inline-block;
+
+    background: #e0e7ff;
+
+    color: #4338ca;
+
+    padding: 8px 16px;
+
+    border-radius: 30px;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    margin-bottom: 18px;
+}
+
+
+.hero h1 {
+
+    font-size: 52px;
+
+    line-height: 1.1;
+
+    margin-bottom: 18px;
+}
+
+
+.hero h1 span {
+
+    color: #4f46e5;
+}
+
+
+.hero p {
+
+    max-width: 650px;
+
+    margin: auto;
+
+    color: #64748b;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+/* ==========================================================
+   FORM CARD
+========================================================== */
+
+.form-card {
+
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 40px;
+
+    box-shadow:
+        0 20px 50px rgba(15, 23, 42, 0.08);
+
+    border: 1px solid #e5e7eb;
+}
+
+
+.form-header {
+
+    margin-bottom: 35px;
+}
+
+
+.form-header h2 {
+
+    font-size: 27px;
+
+    margin-bottom: 8px;
+}
+
+
+.form-header p {
+
+    color: #64748b;
+}
+
+
+/* ==========================================================
+   SECTION TITLE
+========================================================== */
+
+.section-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    margin: 35px 0 20px;
+}
+
+
+.section-title span {
+
+    width: 34px;
+
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #eef2ff;
+
+    color: #4f46e5;
+
+    font-size: 14px;
+}
+
+
+/* ==========================================================
+   FORM GRID
+========================================================== */
+
+.form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 22px;
+}
+
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.form-group label {
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #334155;
+}
+
+
+.form-group input,
+.form-group select {
+
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 12px;
+
+    background: white;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+
+.form-group input:focus,
+.form-group select:focus {
+
+    border-color: #6366f1;
+
+    box-shadow:
+        0 0 0 4px #e0e7ff;
+}
+
+
+/* ==========================================================
+   INPUT PREFIX
+========================================================== */
+
+.input-prefix {
+
+    display: flex;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+
+.input-prefix span {
+
+    background: #f1f5f9;
+
+    padding: 14px;
+
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+
+.input-prefix input {
+
+    border: none;
+
+    border-radius: 0;
+
+    box-shadow: none;
+}
+
+
+.input-prefix input:focus {
+
+    box-shadow: none;
+}
+
+
+/* ==========================================================
+   PREDICT BUTTON
+========================================================== */
+
+.predict-button {
+
+    width: 100%;
+
+    margin-top: 40px;
+
+    padding: 17px;
+
+    border: none;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4f46e5,
+            #7c3aed
+        );
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.25s;
+
+    box-shadow:
+        0 10px 25px rgba(79, 70, 229, 0.25);
+}
+
+
+.predict-button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 15px 30px rgba(79, 70, 229, 0.3);
+}
+
+
+/* ==========================================================
+   HOW IT WORKS
+========================================================== */
+
+.how-section {
+
+    margin-top: 60px;
+
+    text-align: center;
+}
+
+
+.how-section h2 {
+
+    font-size: 30px;
+
+    margin-bottom: 10px;
+}
+
+
+.how-description {
+
+    color: #64748b;
+
+    margin-bottom: 35px;
+}
+
+
+.steps {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+
+.step {
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    border: 1px solid #e5e7eb;
+
+    box-shadow:
+        0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+
+.step-number {
+
+    width: 45px;
+
+    height: 45px;
+
+    margin: auto auto 15px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #eef2ff;
+
+    color: #4f46e5;
+
+    font-weight: 800;
+}
+
+
+.step h3 {
+
+    margin-bottom: 10px;
+
+    font-size: 17px;
+}
+
+
+.step p {
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================================
+   RESULT PAGE
+========================================================== */
+
+.result-page {
+
+    max-width: 850px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.celebration {
+
+    font-size: 45px;
+
+    animation: celebration 1s infinite alternate;
+
+    margin-bottom: 10px;
+}
+
+
+@keyframes celebration {
+
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+
+.sad-animation {
+
+    font-size: 65px;
+
+    margin-bottom: 15px;
+
+    animation: sad 1s infinite alternate;
+}
+
+
+@keyframes sad {
+
+    from {
+        transform: rotate(-5deg);
+    }
+
+    to {
+        transform: rotate(5deg);
+    }
+}
+
+
+.result-icon {
+
+    width: 95px;
+
+    height: 95px;
+
+    border-radius: 50%;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 50px;
+
+    font-weight: 800;
+
+    color: white;
+}
+
+
+.approved-icon {
+
+    background: #16a34a;
+
+    box-shadow:
+        0 15px 40px rgba(22, 163, 74, 0.3);
+}
+
+
+.rejected-icon {
+
+    background: #dc2626;
+
+    box-shadow:
+        0 15px 40px rgba(220, 38, 38, 0.3);
+}
+
+
+.result-title {
+
+    font-size: 42px;
+
+    margin: 20px 0 12px;
+}
+
+
+.approved-title {
+
+    color: #15803d;
+}
+
+
+.rejected-title {
+
+    color: #b91c1c;
+}
+
+
+.result-message {
+
+    color: #64748b;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+
+    max-width: 650px;
+
+    margin: auto;
+}
+
+
+/* ==========================================================
+   PROBABILITY
+========================================================== */
+
+.probability-card {
+
+    background: white;
+
+    border-radius: 22px;
+
+    padding: 30px;
+
+    margin-top: 35px;
+
+    border: 1px solid #e5e7eb;
+
+    box-shadow:
+        0 15px 35px rgba(15, 23, 42, 0.06);
+}
+
+
+.probability-label {
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    margin-bottom: 8px;
+}
+
+
+.probability-number {
+
+    font-size: 52px;
+
+    font-weight: 800;
+
+    color: #4f46e5;
+
+    margin-bottom: 20px;
+}
+
+
+.progress-bar {
+
+    height: 14px;
+
+    background: #e2e8f0;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+
+.progress-fill {
+
+    height: 100%;
+
+    border-radius: 20px;
+
+    transition: width 1.5s ease;
+}
+
+
+.progress-approved {
+
+    background: #16a34a;
+}
+
+
+.progress-rejected {
+
+    background: #dc2626;
+}
+
+
+/* ==========================================================
+   DETAILS
+========================================================== */
+
+.details-card {
+
+    margin-top: 25px;
+
+    background: white;
+
+    border-radius: 22px;
+
+    padding: 30px;
+
+    text-align: left;
+
+    border: 1px solid #e5e7eb;
+
+    box-shadow:
+        0 15px 35px rgba(15, 23, 42, 0.06);
+}
+
+
+.details-card h2 {
+
+    margin-bottom: 20px;
+
+    font-size: 22px;
+}
+
+
+.details-table {
+
+    border-top: 1px solid #e5e7eb;
+}
+
+
+.table-row {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    font-size: 15px;
+}
+
+
+.table-row span {
+
+    color: #64748b;
+}
+
+
+.table-row strong {
+
+    color: #172033;
+}
+
+
+/* ==========================================================
+   MODEL CARD
+========================================================== */
+
+.model-card {
+
+    display: flex;
+
+    gap: 20px;
+
+    text-align: left;
+
+    margin-top: 25px;
+
+    padding: 25px;
+
+    background: #eef2ff;
+
+    border-radius: 20px;
+
+    border: 1px solid #c7d2fe;
+}
+
+
+.model-icon {
+
+    font-size: 35px;
+}
+
+
+.model-card h3 {
+
+    margin-bottom: 8px;
+
+    color: #3730a3;
+}
+
+
+.model-card p {
+
+    color: #475569;
+
+    line-height: 1.7;
+
+    font-size: 14px;
+}
+
+
+/* ==========================================================
+   AGAIN BUTTON
+========================================================== */
+
+.again-button {
+
+    display: inline-block;
+
+    margin-top: 30px;
+
+    padding: 15px 25px;
+
+    border-radius: 13px;
+
+    background: #4f46e5;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+
+.again-button:hover {
+
+    transform: translateY(-2px);
+
+    background: #4338ca;
+}
+
+
+.disclaimer {
+
+    margin-top: 20px;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================================
+   LOADING OVERLAY
+========================================================== */
+
+.loading-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(15, 23, 42, 0.75);
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 999;
+}
+
+
+.loading-overlay.active {
+
+    display: flex;
+}
+
+
+.loading-box {
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 24px;
+
+    text-align: center;
+
+    width: 90%;
+
+    max-width: 420px;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.25);
+}
+
+
+.loading-spinner {
+
+    font-size: 45px;
+
+    animation: spin 1s linear infinite;
+
+    margin-bottom: 15px;
+}
+
+
+@keyframes spin {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.loading-box h2 {
+
+    margin-bottom: 10px;
+}
+
+
+.loading-box p {
+
+    color: #64748b;
+
+    line-height: 1.6;
+}
+
+
+.loading-dots {
+
+    margin-top: 20px;
+}
+
+
+.loading-dots span {
+
+    display: inline-block;
+
+    width: 8px;
+
+    height: 8px;
+
+    margin: 4px;
+
+    border-radius: 50%;
+
+    background: #4f46e5;
+
+    animation: dots 1s infinite alternate;
+}
+
+
+.loading-dots span:nth-child(2) {
+
+    animation-delay: 0.2s;
+}
+
+
+.loading-dots span:nth-child(3) {
+
+    animation-delay: 0.4s;
+}
+
+
+@keyframes dots {
+
+    from {
+        opacity: 0.3;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(-5px);
+    }
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media (max-width: 800px) {
+
+    .form-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .steps {
+
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .hero h1 {
+
+        font-size: 40px;
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .header {
+
+        flex-direction: column;
+
+        gap: 8px;
+
+        text-align: center;
+    }
+
+
+    .container {
+
+        width: 94%;
+
+        padding: 30px 0;
+    }
+
+
+    .form-card {
+
+        padding: 25px 20px;
+    }
+
+
+    .steps {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .result-title {
+
+        font-size: 34px;
+    }
+
+
+    .table-row {
+
+        gap: 20px;
+    }
+
+}
