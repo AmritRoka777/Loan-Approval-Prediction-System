@@ -52,26 +52,10 @@ The trained model is saved as:
 
 model/loan_model.joblib
 
-## Project Structure
 
-Loan-Approval-Prediction-System/
-│
-├── dataset/
-│   └── Dataset.csv
-│
-├── model/
-│   └── loan_model.joblib
-│
-├── static/
-│   └── style.css
-│
-├── templates/
-│   ├── index.html
-│   └── result.html
-│
-├── analyze_data.py
-├── inspect_data.py
-├── train_model.py
-├── app.py
-├── .gitignore
-└── README.md
+
+
+
+
+
+
